@@ -1,0 +1,39 @@
+.green {
+    background-color: #00ff0071;
+}
+
+.green:hover {
+    background-color: #00ff00;
+}
+
+.white {
+    background-color: white;
+}
+
+.white:hover {
+    background-color: rgb(228, 228, 228);
+}
+
+.purple {
+    background-color: rgba(255, 0, 255, 0.497);
+}
+
+.purple:hover {
+    background-color: rgb(255, 0, 255);
+}
+
+.red {
+    background-color: #fd000085;
+}
+
+.red:hover {
+    background-color: #ff0000;
+}
+
+.blue {
+    background-color: rgba(0, 98, 255, 0.588);
+}
+
+.blue:hover {
+    background-color: rgb(0, 98, 255);
+}
