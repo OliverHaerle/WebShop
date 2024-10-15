@@ -1,0 +1,13 @@
+article>img {
+    height: 100px;
+    width: 100px;
+}
+
+article {
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+    margin: 0px 0px 32px 32px;
+}

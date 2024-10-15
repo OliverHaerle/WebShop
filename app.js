@@ -141,24 +141,15 @@ function displayCart() {
             `
         }
     }).join('');
-    cartContainer.innerHTML = displayCart;
+
+    if (cart.length == 0) {
+        cartContainer.innerHTML = 'Your cart is empty.'
+    } else {
+        cartContainer.innerHTML = displayCart + '<span class="black-line-price"></span>'
+    }
+
     displayPrice();
     saveCart();
-}
-
-function undo(i) {
-    cart[i].amount = 1;
-    displayCart();
-};
-
-function removeFromCart(i) {
-    cart.splice(i, 1);
-    displayCart();
-}
-
-function manipulateAmount(man, index) {
-    cart[index].amount += man;
-    displayCart();
 }
 
 function displayPrice() {
@@ -167,24 +158,8 @@ function displayPrice() {
         price += itemInCart.amount * itemInCart.price;
     });
     if (cart.length > 0) {
-        priceContainer.innerHTML = '<b>Total:</b> $' + price;
+        priceContainer.innerHTML = '<b>Total:</b> $' + price + '<br><br> <a href="checkout.html" target=”_blank”> Go to checkout </a>';
     } else {
         priceContainer.innerHTML = ''
     }
 };
-
-// save and load cart
-function saveCart() {
-    cartString = JSON.stringify(cart);
-    localStorage.setItem('cart', cartString);
-};
-
-function retrieveCart() {
-    const retrievedCartString = localStorage.getItem('cart');
-
-    if (retrievedCartString) {
-        const retrievedArray = JSON.parse(retrievedCartString);
-        cart = retrievedArray;
-        displayCart();
-    }
-}

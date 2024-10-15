@@ -7,6 +7,7 @@
     <title>CooLOTHES</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
@@ -17,28 +18,32 @@
             <a class="nav-links" href="">home</a>
             <a class="nav-links" href="">help</a>
             <a class="nav-links" href="">contact</a>
-            <a class="nav-links" href="">
+            <a class="nav-links" href="checkout.html" target="_blank">
                 <img class="shopping-cart" src="./img/shopping cart/shopping-cart.png" alt="basket">
             </a>
         </nav>
     </header>
 
     <!-- <main> -->
-    <section>
-        <div class="clothes-container"></div>
-    </section>
+    <main>
+        <section>
+            <div class="clothes-container"></div>
+        </section>
 
-    <section class="cart-section">
-        <h2>shopping cart</h2>
-        <article class="items-and-price">
-            <div class="cart"></div>
-            <span class="black-line-price"></span>
-            <span class="price"></span>
-        </article>
-    </section>
+        <section class="cart-section">
+            <div class="slider">
+                <h2>shopping cart</h2>
+                <article class="items-and-price">
+                    <div class="cart"></div>
+                    <span class="price"></span>
+                </article>
+            </div>
+        </section>
+    </main>
     <!-- </main> -->
 
     <script src="app.js"></script>
+    <script src="handleCart.js"></script>
 </body>
 
 
