@@ -6,6 +6,7 @@ clothes = [
         img: './img/clothes/white/t-shirt.png',
         colors: ['white'],
         color: 'white',
+        sizes: ['s', 's', 'm', 'l', 'xl']
     },
     {
         name: 'Button Down Shirt',
@@ -14,6 +15,7 @@ clothes = [
         img: './img/clothes/white/Button Down Shirt.png',
         colors: ['white', 'green'],
         color: 'white',
+        sizes: ['s', 's', 'm', 'l', 'xl']
     },
     {
         name: 'Sweater',
@@ -22,6 +24,7 @@ clothes = [
         img: './img/clothes/white/sweater.png',
         colors: ['white', 'green'],
         color: 'white',
+        sizes: ['s', 's', 'm', 'l', 'xl']
     },
     {
         name: 'Skirt',
@@ -30,6 +33,7 @@ clothes = [
         img: './img/clothes/white/skirt.png',
         colors: ['white', 'purple', 'red'],
         color: 'white',
+        sizes: ['s', 's', 'm', 'l', 'xl']
     },
     {
         name: 'Dress',
@@ -38,6 +42,7 @@ clothes = [
         img: './img/clothes/white/dress.png',
         colors: ['white', 'red', 'blue'],
         color: 'white',
+        sizes: ['s', 's', 'm', 'l', 'xl']
     },
     {
         name: 'Hoodie',
@@ -46,6 +51,7 @@ clothes = [
         img: './img/clothes/white/hoodie.png',
         colors: ['white', 'purple'],
         color: 'white',
+        sizes: ['s', 's', 'm', 'l', 'xl']
     }
 ];
 cart = [];
@@ -65,7 +71,6 @@ function displayClothingItems() {
         const colorButtons = item.colors.map((color, colorIndex) => {
             return `<button class="color-picker-btn ${color}" onclick="changeColor(${colorIndex}, ${index})"></button>`
         }).join('');
-
 
         return `
     <article>
