@@ -132,15 +132,18 @@ Cart
 .cart-section {
     display: flex;
     flex-direction: column;
-    /* position: fixed; */
-    /* width: 15vw;
-    right: 50px; */
     top: calc(250px + 2rem);
     text-transform: capitalize;
 }
 
 .slider {
     position: fixed;
+    overflow-y: scroll;
+    top: calc(250px + 2rem);
+    bottom: 16px;
+    scrollbar-width: 0;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 .items-and-price {
