@@ -6,7 +6,8 @@ clothes = [
         img: './img/clothes/white/t-shirt.png',
         colors: ['white'],
         color: 'white',
-        sizes: ['s', 's', 'm', 'l', 'xl']
+        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
+        size: [],
     },
     {
         name: 'Button Down Shirt',
@@ -15,7 +16,8 @@ clothes = [
         img: './img/clothes/white/Button Down Shirt.png',
         colors: ['white', 'green'],
         color: 'white',
-        sizes: ['s', 's', 'm', 'l', 'xl']
+        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
+        size: [],
     },
     {
         name: 'Sweater',
@@ -24,7 +26,8 @@ clothes = [
         img: './img/clothes/white/sweater.png',
         colors: ['white', 'green'],
         color: 'white',
-        sizes: ['s', 's', 'm', 'l', 'xl']
+        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
+        size: [],
     },
     {
         name: 'Skirt',
@@ -33,8 +36,8 @@ clothes = [
         img: './img/clothes/white/skirt.png',
         colors: ['white', 'purple', 'red'],
         color: 'white',
-        sizes: ['s', 's', 'm', 'l', 'xl']
-    },
+        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
+        size: [],    },
     {
         name: 'Dress',
         price: 35,
@@ -42,8 +45,8 @@ clothes = [
         img: './img/clothes/white/dress.png',
         colors: ['white', 'red', 'blue'],
         color: 'white',
-        sizes: ['s', 's', 'm', 'l', 'xl']
-    },
+        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
+        size: [],    },
     {
         name: 'Hoodie',
         price: 40,
@@ -51,8 +54,8 @@ clothes = [
         img: './img/clothes/white/hoodie.png',
         colors: ['white', 'purple'],
         color: 'white',
-        sizes: ['s', 's', 'm', 'l', 'xl']
-    }
+        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
+        size: [],    }
 ];
 cart = [];
 let price = 0;
@@ -72,12 +75,17 @@ function displayClothingItems() {
             return `<button class="color-picker-btn ${color}" onclick="changeColor(${colorIndex}, ${index})"></button>`
         }).join('');
 
+        const sizes = item.sizes.map((item, sizeIndex) => {
+            return `<option class="picker-btn" onclick="changeSize(${sizeIndex}, ${index})">${item}</option>  `
+        }).join('');
+
         return `
     <article>
         <div class="item-container">
             <h4 class="name">${item.name}</h4>
             <img id="item${index}" class="clothes-img" src="${item.img}" alt="${item.img}">
             <div class="color-picker-container">${colorButtons}</div>
+            <select class="color-picker-container">${sizes}</select>
             <div onclick="addToCart(${index})" class="add-to-cart-container">
                 <img class="add-to-cart" src="./img/shopping cart/add-to-cart.png">
             </div>
@@ -93,11 +101,6 @@ function displayClothingItems() {
     clothesContainer.innerHTML = displayedItems;
 };
 
-function availableColors() {
-    const colorButtons = item.colors.map((color, colorIndex) => {
-        return `<button class="color-picker-btn ${color}" onclick="changeColor(${colorIndex}, ${index})"></button>`
-    }).join('');
-}
 
 function changeColor(colorIndex, index) {
     const item = document.getElementById(`item${index}`);
@@ -108,6 +111,10 @@ function changeColor(colorIndex, index) {
     // register and save the current color in the clothes-array (needed for cart)
     clothes[index].color = itemColor;
 };
+
+function changeSize() {
+
+}
 
 function addToCart(i) {
     const item = { ...clothes[i] };

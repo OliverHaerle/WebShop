@@ -29,6 +29,10 @@ Clothes Grid
     gap: 8px;
 }
 
+select {
+    text-transform: uppercase;
+
+}
 
 .price-and-material {
     display: flex;
@@ -139,7 +143,7 @@ Cart
 .slider {
     position: fixed;
     overflow-y: scroll;
-    /* top: calc(250px + 2rem); */
+    top: calc(250px + 2rem);
     bottom: 16px;
     scrollbar-width: 0;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -170,3 +174,4 @@ Cart
     justify-content: space-around;
     margin-top: 8px;
 }
+
