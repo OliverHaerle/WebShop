@@ -11,3 +11,27 @@ article {
     width: 80vw;
     margin: 0px 0px 32px 32px;
 }
+
+.item-name {
+    min-width: 240px;
+}
+
+.handle-amount {
+    min-width: 240px;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.change-amount {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 240px;
+}
+
+article>span {
+    min-width: 100px;
+}

@@ -80,7 +80,6 @@ function displayClothingItems() {
             <div class="color-picker-container">${colorButtons}</div>
             <div onclick="addToCart(${index})" class="add-to-cart-container">
                 <img class="add-to-cart" src="./img/shopping cart/add-to-cart.png">
-                <!-- <span>Added!</span> -->
             </div>
         </div>
         <div class="price-and-material">
@@ -93,6 +92,12 @@ function displayClothingItems() {
     displayedItems = displayedItems.join('');
     clothesContainer.innerHTML = displayedItems;
 };
+
+function availableColors() {
+    const colorButtons = item.colors.map((color, colorIndex) => {
+        return `<button class="color-picker-btn ${color}" onclick="changeColor(${colorIndex}, ${index})"></button>`
+    }).join('');
+}
 
 function changeColor(colorIndex, index) {
     const item = document.getElementById(`item${index}`);

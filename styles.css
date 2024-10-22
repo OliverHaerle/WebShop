@@ -55,3 +55,89 @@ main {
     display: flex;
     flex-direction: row;
 }
+
+/*
+=============== 
+Cart buttons
+===============
+*/
+
+.delete-and-undo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    height: 72px;
+}
+
+.undo-remove {
+    background: var(--myOrange);
+    border: 1px solid var(--myOrange);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: capitalize;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.undo-remove:hover,
+.undo-remove:active,
+.change-amount>button:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: var(--myOrange);
+}
+
+.undo-remove:active,
+.change-amount>button:active {
+    opacity: .5;
+}
+
+/* Change Amount */
+
+.change-amount>button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    border: 1px solid var(--myOrange);
+    background-color: var(--myOrange);
+    height: 26px;
+    width: 26px;
+}
+
+.change-amount>button:hover {
+    cursor: pointer;
+    background-color: initial;
+    color: var(--myOrange);
+}
+
+.change-amount>button>svg {
+    height: 16px;
+    width: 16px;
+}
+
+.change-amount>button path {
+    stroke: white;
+    fill: white;
+}
+
+.change-amount>button:hover path {
+    height: 10px;
+    fill: var(--myOrange);
+    stroke: var(--myOrange);
+}
