@@ -16,7 +16,7 @@ function displayClothingItems() {
             return `<button class="color-picker-btn ${color}" onclick="changeColor(${colorIndex}, ${index})"></button>`
         }).join('');
 
-        const sizeOptions = Object.keys(item.stock).map((stockKey) => {
+        const sizeOptions = Object.keys(item.stock.white).map((stockKey) => {
             return `<option value="${stockKey}">${stockKey}</option>`;
         }).join('');
 
@@ -56,7 +56,7 @@ function addToCart(i) {
     const item = { ...clothes[i] };
     item.size = document.getElementById(`size${i}`).value;
     
-    // Check if an item with the same color and name already exists in cart
+    // Check if an item with the same color, size, and name already exists in cart
     const existingItem = cart.find(cartItem => cartItem.name === item.name && cartItem.color === item.color && cartItem.size === item.size);
 
     if (existingItem) {
@@ -66,7 +66,13 @@ function addToCart(i) {
         cart.push(item)
     };
 
+    handleStock(i);
     displayCart();
+}
+
+function handleStock(i) {
+    const chosenSize = document.getElementById(`size${i}`).value;
+    console.log(clothes[i].stock[clothes[i].color][chosenSize]);
 }
 
 function displayCart() {
@@ -117,3 +123,8 @@ function displayPrice() {
         priceContainer.innerHTML = ''
     }
 };
+
+function emptyCart() {
+    cart = [];
+    displayCart()
+}
