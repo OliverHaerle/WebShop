@@ -71,8 +71,14 @@ function addToCart(i) {
 }
 
 function handleStock(i) {
+    // I know the item (clothes[i]) and its selected size
     const chosenSize = document.getElementById(`size${i}`).value;
+
+    // I can access the position at which the chosen Size lies 
     console.log(clothes[i].stock[clothes[i].color][chosenSize]);
+
+    let newAmount = clothes[i].stock[clothes[i].color][chosenSize]--;
+    document.querySelector('.test').innerHTML = newAmount;
 }
 
 function displayCart() {
