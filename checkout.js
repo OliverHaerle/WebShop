@@ -16,7 +16,7 @@ function displayCart() {
             <img src="./img/clothes/${item.color}/${item.name}.png ">
             <div class="item-name">
                 <span>${item.name} - ${item.color}</span> <br>
-                <span>size:</span>
+                <span>size: ${item.size}</span>
             </div>
             <div class="handle-amount">
                 ${handleAmount}

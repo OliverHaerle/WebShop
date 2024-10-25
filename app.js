@@ -1,62 +1,3 @@
-clothes = [
-    {
-        name: 'T-Shirt',
-        price: 20,
-        material: 'cotton',
-        img: './img/clothes/white/t-shirt.png',
-        colors: ['white'],
-        color: 'white',
-        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
-        size: [],
-    },
-    {
-        name: 'Button Down Shirt',
-        price: 25,
-        material: 'silk and cotton',
-        img: './img/clothes/white/Button Down Shirt.png',
-        colors: ['white', 'green'],
-        color: 'white',
-        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
-        size: [],
-    },
-    {
-        name: 'Sweater',
-        price: 40,
-        material: 'cotton',
-        img: './img/clothes/white/sweater.png',
-        colors: ['white', 'green'],
-        color: 'white',
-        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
-        size: [],
-    },
-    {
-        name: 'Skirt',
-        price: 15,
-        material: 'cotton',
-        img: './img/clothes/white/skirt.png',
-        colors: ['white', 'purple', 'red'],
-        color: 'white',
-        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
-        size: [],    },
-    {
-        name: 'Dress',
-        price: 35,
-        material: 'cotton',
-        img: './img/clothes/white/dress.png',
-        colors: ['white', 'red', 'blue'],
-        color: 'white',
-        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
-        size: [],    },
-    {
-        name: 'Hoodie',
-        price: 40,
-        material: 'wool',
-        img: './img/clothes/white/hoodie.png',
-        colors: ['white', 'purple'],
-        color: 'white',
-        sizes: ['Choose size', 'xs', 's', 'm', 'l', 'xl'],
-        size: [],    }
-];
 cart = [];
 let price = 0;
 
@@ -75,8 +16,8 @@ function displayClothingItems() {
             return `<button class="color-picker-btn ${color}" onclick="changeColor(${colorIndex}, ${index})"></button>`
         }).join('');
 
-        const sizes = item.sizes.map((item, sizeIndex) => {
-            return `<option class="picker-btn" onclick="changeSize(${sizeIndex}, ${index})">${item}</option>  `
+        const sizeOptions = Object.keys(item.sizes).map((sizeKey) => {
+            return `<option value="${sizeKey}">${sizeKey}</option>`;
         }).join('');
 
         return `
@@ -85,7 +26,7 @@ function displayClothingItems() {
             <h4 class="name">${item.name}</h4>
             <img id="item${index}" class="clothes-img" src="${item.img}" alt="${item.img}">
             <div class="color-picker-container">${colorButtons}</div>
-            <select class="color-picker-container">${sizes}</select>
+            <select id="size${index}" class="color-picker-container">${sizeOptions}</select>
             <div onclick="addToCart(${index})" class="add-to-cart-container">
                 <img class="add-to-cart" src="./img/shopping cart/add-to-cart.png">
             </div>
@@ -101,7 +42,6 @@ function displayClothingItems() {
     clothesContainer.innerHTML = displayedItems;
 };
 
-
 function changeColor(colorIndex, index) {
     const item = document.getElementById(`item${index}`);
     const itemName = clothes[index].name;
@@ -112,15 +52,12 @@ function changeColor(colorIndex, index) {
     clothes[index].color = itemColor;
 };
 
-function changeSize() {
-
-}
-
 function addToCart(i) {
     const item = { ...clothes[i] };
-
+    item.size = document.getElementById(`size${i}`).value;
+    
     // Check if an item with the same color and name already exists in cart
-    const existingItem = cart.find(cartItem => cartItem.name === item.name && cartItem.color === item.color);
+    const existingItem = cart.find(cartItem => cartItem.name === item.name && cartItem.color === item.color && cartItem.size === item.size);
 
     if (existingItem) {
         existingItem.amount++
@@ -146,7 +83,7 @@ function displayCart() {
 
             return `
         <div id="cart-item${i}" class="cart-item">
-            <b>${item.amount}x</b> ${item.name} - ${item.color}: $${item.amount * item.price}
+            <b>${item.amount}x</b> ${item.name} - ${item.color} - ${item.size} <br> $${item.amount * item.price}
             <div id="amount-container${i}" class="change-amount">
                 <button onclick="manipulateAmount(-1, ${i})">
                     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#000000" fill-rule="evenodd" d="M18 10a1 1 0 01-1 1H3a1 1 0 110-2h14a1 1 0 011 1z"/></svg>                </button>
