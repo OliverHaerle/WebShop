@@ -16,8 +16,8 @@ function displayClothingItems() {
             return `<button class="color-picker-btn ${color}" onclick="changeColor(${colorIndex}, ${index})"></button>`
         }).join('');
 
-        const sizeOptions = Object.keys(item.sizes).map((sizeKey) => {
-            return `<option value="${sizeKey}">${sizeKey}</option>`;
+        const sizeOptions = Object.keys(item.stock).map((stockKey) => {
+            return `<option value="${stockKey}">${stockKey}</option>`;
         }).join('');
 
         return `
