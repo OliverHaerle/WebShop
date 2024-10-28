@@ -8,10 +8,24 @@ function removeFromCart(i) {
     displayCart();
 }
 
-function manipulateAmount(man, index) {
-    cart[index].amount += man;
+function manipulateAmount(inc, index) {
+    cart[index].amount += inc;
     displayCart();
+
+    findClothingItem(inc, cart[index].name, cart[index].color, cart[index].size)
 }
+
+function findClothingItem(inc, name, color, size) {
+    const item = clothes.find(item =>
+        item.name === name &&
+        item.color === color &&
+        item.stock[color]
+    );
+    
+    const itemInStock = item.stock[color][size]-=inc;
+    console.log(itemInStock)
+}
+
 
 function saveCart() {
     cartString = JSON.stringify(cart);
@@ -27,3 +41,4 @@ function retrieveCart() {
         displayCart();
     }
 }
+

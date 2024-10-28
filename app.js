@@ -1,6 +1,8 @@
 cart = [];
 let price = 0;
 
+const tester = document.querySelector('.test');
+
 const clothesContainer = document.querySelector('.clothes-container');
 const cartContainer = document.querySelector('.cart');
 const priceContainer = document.querySelector('.price');
@@ -27,7 +29,7 @@ function displayClothingItems() {
             <img id="item${index}" class="clothes-img" src="${item.img}" alt="${item.img}">
             <div class="color-picker-container">${colorButtons}</div>
             <select id="size${index}" class="color-picker-container">${sizeOptions}</select>
-            <div onclick="addToCart(${index})" class="add-to-cart-container">
+            <div onclick="checkStock(${index})" class="add-to-cart-container">
                 <img class="add-to-cart" src="./img/shopping cart/add-to-cart.png">
             </div>
         </div>
@@ -52,9 +54,9 @@ function changeColor(colorIndex, index) {
     clothes[index].color = itemColor;
 };
 
-function addToCart(i) {
+function addToCart(i, chosenSize) {
     const item = { ...clothes[i] };
-    item.size = document.getElementById(`size${i}`).value;
+    item.size = chosenSize;
     
     // Check if an item with the same color, size, and name already exists in cart
     const existingItem = cart.find(cartItem => cartItem.name === item.name && cartItem.color === item.color && cartItem.size === item.size);
@@ -66,19 +68,18 @@ function addToCart(i) {
         cart.push(item)
     };
 
-    handleStock(i);
     displayCart();
 }
 
-function handleStock(i) {
-    // I know the item (clothes[i]) and its selected size
+function checkStock(i) {
     const chosenSize = document.getElementById(`size${i}`).value;
 
-    // I can access the position at which the chosen Size lies 
-    console.log(clothes[i].stock[clothes[i].color][chosenSize]);
+    let newAmount = clothes[i].stock[clothes[i].color];
 
-    let newAmount = clothes[i].stock[clothes[i].color][chosenSize]--;
-    document.querySelector('.test').innerHTML = newAmount;
+    if (newAmount[chosenSize] > 0) {
+        addToCart(i, chosenSize);
+        newAmount[chosenSize]--;
+    }
 }
 
 function displayCart() {
