@@ -79,6 +79,8 @@ function checkStock(i) {
     if (newAmount[chosenSize] > 0) {
         addToCart(i, chosenSize);
         newAmount[chosenSize]--;
+    } else {
+        alert('out of stock')
     }
 }
 

@@ -9,28 +9,30 @@ function removeFromCart(i) {
 }
 
 function manipulateAmount(inc, index) {
-    cart[index].amount += inc;
+    const itemName = cart[index].name;
+    const itemColor = cart[index].color;
+    const itemSize = cart[index].size;
+
+    let itemInStock = clothes.find(item => item.name === itemName);
+
+    if (itemInStock.stock[itemColor][itemSize] < 1 && inc == 1) {
+        alert('Out of Stock')
+        outOfStock();
+    } else {
+        cart[index].amount += inc;
+        itemInStock.stock[itemColor][itemSize] -= inc;
+    }
     displayCart();
-
-    findClothingItem(inc, cart[index].name, cart[index].color, cart[index].size)
 }
-
-function findClothingItem(inc, name, color, size) {
-    const item = clothes.find(item =>
-        item.name === name &&
-        item.color === color &&
-        item.stock[color]
-    );
-    
-    const itemInStock = item.stock[color][size]-=inc;
-    console.log(itemInStock)
-}
-
 
 function saveCart() {
     cartString = JSON.stringify(cart);
     localStorage.setItem('cart', cartString);
 };
+
+function outOfStock() {
+
+}
 
 function retrieveCart() {
     const retrievedCartString = localStorage.getItem('cart');
