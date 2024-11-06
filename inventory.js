@@ -1,4 +1,4 @@
-const clothes = [
+let clothes = [
     {
         name: 'T-Shirt',
         price: 20,

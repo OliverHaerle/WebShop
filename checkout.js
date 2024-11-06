@@ -4,6 +4,7 @@ const cartContainer = document.querySelector('.cart');
 
 window.addEventListener('DOMContentLoaded', function () {
     retrieveCart();
+    retrieveInventory();
 });
 
 function displayCart() {
@@ -33,7 +34,7 @@ function displayCart() {
 function checkAmount(amount, i) {
     if (amount == 0) {
         return `
-            <button class="undo-remove" onclick="undo(${i})">undo</button>
+            <button class="undo-remove" onclick="manipulateAmount(1, ${i})">undo</button>
             <button class="undo-remove" onclick="removeFromCart(${i})">remove</button>
         `
     } else {

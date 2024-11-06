@@ -6,7 +6,7 @@ function undo(i) {
 function removeFromCart(i) {
     cart.splice(i, 1);
     displayCart();
-}
+};
 
 function manipulateAmount(inc, index) {
     const itemName = cart[index].name;
@@ -21,9 +21,10 @@ function manipulateAmount(inc, index) {
     } else {
         cart[index].amount += inc;
         itemInStock.stock[itemColor][itemSize] -= inc;
-    }
+    };
     displayCart();
-}
+    saveInventory();
+};
 
 function saveCart() {
     cartString = JSON.stringify(cart);
@@ -32,7 +33,12 @@ function saveCart() {
 
 function outOfStock() {
 
-}
+};
+
+function saveCart() {
+    cartString = JSON.stringify(cart);
+    localStorage.setItem('cart', cartString);
+};
 
 function retrieveCart() {
     const retrievedCartString = localStorage.getItem('cart');
@@ -41,6 +47,22 @@ function retrieveCart() {
         const retrievedArray = JSON.parse(retrievedCartString);
         cart = retrievedArray;
         displayCart();
-    }
-}
+    };
+};
+
+function saveInventory() {
+    clothesString = JSON.stringify(clothes);
+    localStorage.setItem('clothes', clothesString);
+    console.log(clothes[0].stock.white.xs)
+};
+
+function retrieveInventory() {
+    const retrievedClothesString = localStorage.getItem('clothes');
+
+    if (retrievedClothesString) {
+        const retrievedArray = JSON.parse(retrievedClothesString);
+        clothes = retrievedArray;
+        console.log(clothes)
+    };
+};
 

@@ -10,6 +10,7 @@ const priceContainer = document.querySelector('.price');
 window.addEventListener('DOMContentLoaded', function () {
     displayClothingItems();
     retrieveCart();
+    retrieveInventory();
 });
 
 function displayClothingItems() {
@@ -54,6 +55,19 @@ function changeColor(colorIndex, index) {
     clothes[index].color = itemColor;
 };
 
+function checkStock(i) {
+    const chosenSize = document.getElementById(`size${i}`).value;
+
+    let chosenItem = clothes[i].stock[clothes[i].color];
+
+    if (chosenItem[chosenSize] > 0) {
+        chosenItem[chosenSize]--;
+        addToCart(i, chosenSize);
+    } else {
+        alert('out of stock')
+    }
+};
+
 function addToCart(i, chosenSize) {
     const item = { ...clothes[i] };
     item.size = chosenSize;
@@ -69,20 +83,8 @@ function addToCart(i, chosenSize) {
     };
 
     displayCart();
-}
-
-function checkStock(i) {
-    const chosenSize = document.getElementById(`size${i}`).value;
-
-    let newAmount = clothes[i].stock[clothes[i].color];
-
-    if (newAmount[chosenSize] > 0) {
-        addToCart(i, chosenSize);
-        newAmount[chosenSize]--;
-    } else {
-        alert('out of stock')
-    }
-}
+    saveInventory();
+};
 
 function displayCart() {
     let displayCart = cart.map((item, i) => {
@@ -90,7 +92,7 @@ function displayCart() {
         if (item.amount == 0) {
             return `
             <article class="delete-and-undo">
-                <button class="undo-remove" onclick="undo(${i})">undo</button>
+                <button class="undo-remove" onclick="manipulateAmount(1, ${i})">undo</button>
                 <button class="undo-remove" onclick="removeFromCart(${i})">remove</button>
             </article>
             `
@@ -119,7 +121,7 @@ function displayCart() {
 
     displayPrice();
     saveCart();
-}
+};
 
 function displayPrice() {
     price = 0;
@@ -135,5 +137,5 @@ function displayPrice() {
 
 function emptyCart() {
     cart = [];
-    displayCart()
-}
+    displayCart();
+};
