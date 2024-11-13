@@ -161,4 +161,14 @@ Appear - Disappear
 ===============
 */
 
+.appear-slide {
+    opacity: 0;
+    transform: translateY(20px);  /* Start slightly lower */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Both opacity and position transition */
+}
+
+.appear-slide.visible {
+    opacity: 1;
+    transform: translateY(0);     /* Moves into its final position */
+}
 

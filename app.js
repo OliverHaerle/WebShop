@@ -47,19 +47,29 @@ function displayClothingItems() {
 
 function showItem(i) {
     document.body.style.overflow = 'hidden';
-    bigView.classList.remove('d-none');
+    const bigView = document.getElementById('big-view');
+    bigView.classList.remove('d-none'); // Make it visible immediately
+
+    // Add the 'visible' class slightly delayed to trigger the transition
+    setTimeout(() => {
+        bigView.classList.add('visible'); // Trigger fade-in transition
+    }, 10); // A very short delay to allow the browser to register the class removal
+
+    // Populate the inner content
     bigView.innerHTML = `
-    <article id ="big-view-article">
+    <article id="big-view-article">
         <img class="big-view-img" src="./img/clothes/${clothes[i].color}/${clothes[i].name}.png">
         <span class="big-view-desc">${clothes[i].description}</span>
-        <img class="big-view-close" id="close" id src="./img/close.png" alt="close">
+        <img class="big-view-close" id="close" src="./img/close.png" alt="close">
     </article>
-    `
-};
+    `;
+}
+
 
 function hideItem(event) {
     if (event.target.id === "big-view" || event.target.id === "close") {
         bigView.classList.add('d-none');
+        bigView.classList.remove('visible');
         document.body.style.overflow = 'auto';
     }
 }
