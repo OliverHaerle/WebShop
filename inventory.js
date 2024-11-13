@@ -7,6 +7,7 @@ let clothes = [
         colors: ['white'],
         color: 'white',
         size: '',
+        description: 'This classic t-shirt combines soft, breathable cotton with a relaxed fit and durable design, making it perfect for everyday comfort and versatile style.',
         stock: {
             white: {
                 xs: 4,
@@ -25,6 +26,7 @@ let clothes = [
         colors: ['white', 'green'],
         color: 'white',
         size: '',
+        description: 'This button-down shirt features crisp, lightweight fabric and a tailored fit, perfect for both professional and casual settings.',
         stock: {
             white: {
                 xs: 3,
@@ -50,6 +52,7 @@ let clothes = [
         colors: ['white', 'green'],
         color: 'white',
         size: '',
+        description: 'Made from cozy, soft-knit fabric, this sweater provides warmth and style, ideal for layering in cooler weather.',
         stock: {
             white: {
                 xs: 6,
@@ -75,6 +78,7 @@ let clothes = [
         colors: ['white', 'purple', 'red'],
         color: 'white',
         size: '',
+        description: 'With its flattering silhouette and flowy fabric, this skirt offers effortless style for any occasion, from casual days to evening outings.',
         stock: {
             white: {
                 xs: 7,
@@ -107,6 +111,7 @@ let clothes = [
         colors: ['white', 'red', 'blue'],
         color: 'white',
         size: '',
+        description: 'This versatile dress combines a comfortable fit with elegant lines, making it perfect for both daywear and special events.',
         stock: {
             white: {
                 xs: 2,
@@ -139,6 +144,7 @@ let clothes = [
         colors: ['white', 'purple'],
         color: 'white',
         size: '',
+        description: 'Crafted from plush, warm fabric, this hoodie offers a relaxed fit and cozy feel, perfect for everyday comfort and layering.',
         stock: {
             white: {
                 xs: 9,
@@ -157,3 +163,4 @@ let clothes = [
         }
     }
 ];
+

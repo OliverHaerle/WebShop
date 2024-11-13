@@ -62,5 +62,11 @@ Plus:
 
 <a href="https://www.flaticon.com/de/kostenlose-icons/plus" title="plus Icons">Plus Icons erstellt von edt.im - Flaticon</a>
 
+----
+
+X:
+
+<a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Pixel perfect - Flaticon</a>
+
 
 

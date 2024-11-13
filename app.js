@@ -5,7 +5,7 @@ const tester = document.querySelector('.test');
 
 const clothesContainer = document.querySelector('.clothes-container');
 const cartContainer = document.querySelector('.cart');
-const priceContainer = document.querySelector('.price');
+const bigView = document.querySelector('.big-view');
 
 window.addEventListener('DOMContentLoaded', function () {
     displayClothingItems();
@@ -27,7 +27,7 @@ function displayClothingItems() {
     <article>
         <div class="item-container">
             <h4 class="name">${item.name}</h4>
-            <img id="item${index}" class="clothes-img" src="${item.img}" alt="${item.img}">
+            <img onclick="showItem(${index})" id="item${index}" class="clothes-img" src="${item.img}" alt="${item.img}">
             <div class="color-picker-container">${colorButtons}</div>
             <select id="size${index}" class="color-picker-container">${sizeOptions}</select>
             <div onclick="checkStock(${index})" class="add-to-cart-container">
@@ -44,6 +44,25 @@ function displayClothingItems() {
     displayedItems = displayedItems.join('');
     clothesContainer.innerHTML = displayedItems;
 };
+
+function showItem(i) {
+    document.body.style.overflow = 'hidden';
+    bigView.classList.remove('d-none');
+    bigView.innerHTML = `
+    <article id ="big-view-article">
+        <img class="big-view-img" src="./img/clothes/${clothes[i].color}/${clothes[i].name}.png">
+        <span class="big-view-desc">${clothes[i].description}</span>
+        <img class="big-view-close" id="close" id src="./img/close.png" alt="close">
+    </article>
+    `
+};
+
+function hideItem(event) {
+    if (event.target.id === "big-view" || event.target.id === "close") {
+        bigView.classList.add('d-none');
+        document.body.style.overflow = 'auto';
+    }
+}
 
 function changeColor(colorIndex, index) {
     const item = document.getElementById(`item${index}`);
@@ -71,7 +90,7 @@ function checkStock(i) {
 function addToCart(i, chosenSize) {
     const item = { ...clothes[i] };
     item.size = chosenSize;
-    
+
     // Check if an item with the same color, size, and name already exists in cart
     const existingItem = cart.find(cartItem => cartItem.name === item.name && cartItem.color === item.color && cartItem.size === item.size);
 
@@ -129,7 +148,7 @@ function displayPrice() {
         price += itemInCart.amount * itemInCart.price;
     });
     if (cart.length > 0) {
-        priceContainer.innerHTML = '<b>Total:</b> $' + price + '<br><br> <a href="checkout.html" target=”_blank”> Go to checkout </a>';
+        priceContainer.innerHTML = '<b>Total:</b> $' + price + '<br><br> <a href="checkout.html" target=”_blank”> Your Cart </a>';
     } else {
         priceContainer.innerHTML = ''
     }

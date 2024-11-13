@@ -5,6 +5,7 @@ const cartContainer = document.querySelector('.cart');
 window.addEventListener('DOMContentLoaded', function () {
     retrieveCart();
     retrieveInventory();
+    displayPrice();
 });
 
 function displayCart() {
@@ -29,6 +30,7 @@ function displayCart() {
 
     cartContainer.innerHTML = checkIfCartEmpty(displayCart)
     saveCart();
+    displayPrice();
 }
 
 function checkAmount(amount, i) {
@@ -60,6 +62,14 @@ function checkIfCartEmpty(displayCart) {
     }
 }
 
-
-
-
+function displayPrice() {
+    price = 0;
+    cart.forEach(itemInCart => {
+        price += itemInCart.amount * itemInCart.price;
+    });
+    if (cart.length > 0) {
+        priceContainer.innerHTML = '<b>Total:</b> $' + price + '<br><br> <a href="checkout.html" target=”_blank”> Go to checkout </a>';
+    } else {
+        priceContainer.innerHTML = ''
+    }
+};

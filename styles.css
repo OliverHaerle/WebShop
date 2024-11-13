@@ -10,6 +10,7 @@ Fonts
 :root {
     --border-color: rgb(171, 171, 171);
     --myOrange: rgb(213, 67, 48);
+    --myOrange-light: rgb(213, 67, 68);
 }
 
 
@@ -23,6 +24,10 @@ Global Styles
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+/* body {
+    background: linear-gradient(to bottom, #ffe0bf4f, #ffef9ab0, #ffb30296);
+}; */
 
 header {
     display: flex;
@@ -54,6 +59,10 @@ header {
 main {
     display: flex;
     flex-direction: row;
+}
+
+.d-none {
+    display: none !important;
 }
 
 /*
@@ -107,7 +116,11 @@ Cart buttons
     opacity: .5;
 }
 
-/* Change Amount */
+/*
+=============== 
+Change amount
+===============
+*/
 
 .change-amount>button {
     display: flex;
@@ -141,3 +154,11 @@ Cart buttons
     fill: var(--myOrange);
     stroke: var(--myOrange);
 }
+
+/*
+=============== 
+Appear - Disappear
+===============
+*/
+
+

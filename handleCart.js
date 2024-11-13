@@ -1,3 +1,5 @@
+const priceContainer = document.querySelector('.price');
+
 function undo(i) {
     cart[i].amount = 1;
     displayCart();
@@ -40,6 +42,8 @@ function saveCart() {
     localStorage.setItem('cart', cartString);
 };
 
+// local storage
+
 function retrieveCart() {
     const retrievedCartString = localStorage.getItem('cart');
 
@@ -53,7 +57,6 @@ function retrieveCart() {
 function saveInventory() {
     clothesString = JSON.stringify(clothes);
     localStorage.setItem('clothes', clothesString);
-    console.log(clothes[0].stock.white.xs)
 };
 
 function retrieveInventory() {
@@ -62,7 +65,6 @@ function retrieveInventory() {
     if (retrievedClothesString) {
         const retrievedArray = JSON.parse(retrievedClothesString);
         clothes = retrievedArray;
-        console.log(clothes)
     };
 };
 
